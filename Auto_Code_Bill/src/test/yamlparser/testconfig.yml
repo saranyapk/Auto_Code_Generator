@@ -1,0 +1,7 @@
+package: com.subex.interconnect.sitespecific.idea.taskcontroller.tasks.bill
+is-delta: true
+query-processor-required: true
+rounding-mode: ROUNDUP
+birt-parameters: ["account","bill Profile" ]
+extra-key-components: [ "extrakey1","extrakey2" ]
+extra-value-components: [ "extravalue1","extravalue2"]
