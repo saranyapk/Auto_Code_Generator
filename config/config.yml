@@ -1,6 +1,6 @@
 package: com.subex.interconnect.sitespecific.idea.taskcontroller.tasks.bill
-is-delta: y
-query-processor-required: y
+is-delta: true
+query-processor-required: true
 output-folder: D:\Projects\Internal-GDO
 birt-parameters: ["account","bill Profile" ]
 extra-key-components: [ "extrakey1","extrakey2" ]

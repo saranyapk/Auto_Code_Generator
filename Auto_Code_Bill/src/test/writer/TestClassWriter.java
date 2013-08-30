@@ -23,6 +23,7 @@ public class TestClassWriter extends TestCase
         classData.setPackageInfo( "com.subex" );
         classData.setFolder( "test" );
         classData.setAccessSpecifiers( Arrays.asList( "private" ) );
+        classData.setComments( "This is comment to test the comments" );
 
         List< String > superClass = Arrays.asList( "SuperClass1", "SuperClass2" );
         classData.setSuperClasses( superClass );
@@ -56,10 +57,10 @@ public class TestClassWriter extends TestCase
 
     public void testWrite()
     {
-        ClassWriter classWriter = new ClassWriter( config );
+        ClassWriter classWriter = new ClassWriter();
         try
         {
-           // classWriter.write( new ClassData() );
+            // classWriter.write( new ClassData() );
             classWriter.write( classData );
         }
         catch ( BillAutoCodeGenerateException e )
@@ -67,6 +68,5 @@ public class TestClassWriter extends TestCase
             e.printStackTrace();
         }
 
-        
     }
 }

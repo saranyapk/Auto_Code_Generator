@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
+import main.AutoCodeGenerator;
+
 import org.joda.time.DateTime;
 
 import writer.helper.WriterHelper;
@@ -18,9 +20,9 @@ public class ClassWriter
     private Configuration config;
     private MethodWriter methodWriter;
 
-    public ClassWriter( Configuration config )
+    public ClassWriter()
     {
-        this.config = config;
+        this.config = AutoCodeGenerator.config;
         methodWriter = new MethodWriter( config );
     }
 
@@ -55,6 +57,8 @@ public class ClassWriter
                 printWriter.println( "import " + classData.getImports().get( importCount ) + ";" );
             }
         }
+
+        printWriter.println( "/** " + classData.getComments() + " */" );
 
         printWriter.print( WriterHelper.getListAsString( classData.getAccessSpecifiers() ) + " " + classData.getClassName() );
 
