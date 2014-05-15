@@ -11,8 +11,6 @@ public interface GetClassData
 
     public String getComments();
 
-    public String getPackageInfo();
-
     public String getClassName();
 
     public List< String > getImports();
@@ -26,5 +24,7 @@ public interface GetClassData
     public List< VariableData > getClassVariables();
 
     public List< MethodData > getMethods();
+    
+    public String getFolder();
 
 }

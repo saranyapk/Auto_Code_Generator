@@ -11,7 +11,7 @@ import exception.BillAutoCodeGenerateException;
 
 public class AutoCodeGenerator
 {
-    public static Configuration config = null;
+    private static Configuration config = null;
 
     public static void main( String args[] ) throws BillAutoCodeGenerateException
     {
@@ -21,8 +21,7 @@ public class AutoCodeGenerator
             return;
         }
         String ymlConfigFile = args[0];
-        YamlParser yamlParser = new YamlParser();
-        HashMap< String, Object > input = yamlParser.parse( ymlConfigFile );
+        HashMap< String, Object > input = YamlParser.parse( ymlConfigFile );
         ConfigurationReader configReader = new ConfigurationReader( input );
         config = configReader.read();
 
@@ -34,5 +33,10 @@ public class AutoCodeGenerator
     private static void printHelp()
     {
         System.out.println( "Usage: java -jar AutoCodeBill <Config file path>" );
+    }
+
+    public static Configuration getConfig()
+    {
+        return config;
     }
 }

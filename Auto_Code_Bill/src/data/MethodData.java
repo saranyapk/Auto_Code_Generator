@@ -14,6 +14,7 @@ public class MethodData
      */
     private String fullyQualifiedClassName;
     private String methodNameToBeInvoked;
+    private List< String > throwsExceptions;
 
     public String getComments()
     {
@@ -85,5 +86,14 @@ public class MethodData
         this.methodNameToBeInvoked = methodNameToBeInvoked;
     }
 
-   
+    public List< String > getThrowsExceptions()
+    {
+        return throwsExceptions;
+    }
+
+    public void setThrowsExceptions( List< String > throwsExceptions )
+    {
+        this.throwsExceptions = throwsExceptions;
+    }
+
 }

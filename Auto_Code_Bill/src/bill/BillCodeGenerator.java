@@ -15,7 +15,7 @@ public class BillCodeGenerator
 
     public BillCodeGenerator()
     {
-        this.config = AutoCodeGenerator.config;
+        this.config = AutoCodeGenerator.getConfig();
         this.classDataPopulator = new ClassDataPopulator();
         this.classWriter = new ClassWriter();
     }
@@ -25,19 +25,22 @@ public class BillCodeGenerator
         if ( config.isQueryProcessorRequired() )
         {
             classWriter.write( classDataPopulator.populateNGetClassData( new QueryProcessor() ) );
+            System.out.println( "Generated Query Processor in " + this.config.getOutputFolder() );
 
         }
         if ( config.isDelta() )
         {
             classWriter.write( classDataPopulator.populateNGetClassData( new DeltaBillComponent() ) );
+            System.out.println( "Generated Delta Bill Component in " + this.config.getOutputFolder() );
         }
         else
         {
             classWriter.write( classDataPopulator.populateNGetClassData( new NonDeltaBillComponent() ) );
+            System.out.println( "Generated Non Delta Bill Component in " + this.config.getOutputFolder() );
         }
 
         classWriter.write( classDataPopulator.populateNGetClassData( new BirtComponent() ) );
-        
+
         classWriter.write( classDataPopulator.populateNGetClassData( new HelperComponent() ) );
 
     }

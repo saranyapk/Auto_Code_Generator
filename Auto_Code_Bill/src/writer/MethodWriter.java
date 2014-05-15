@@ -22,11 +22,11 @@ public class MethodWriter
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public void write( MethodData methodData, PrintWriter printWriter ) throws BillAutoCodeGenerateException
     {
-        printWriter.println( WriterHelper.getListAsString( methodData.getAccessSpecifiers() ) + " " + methodData.getReturnType() + " " + methodData.getMethodName() + " ( " );
+        printWriter.print( "\t" + WriterHelper.getListAsString( methodData.getAccessSpecifiers() ) + methodData.getReturnType() + " " + methodData.getMethodName() + "( " );
 
         if ( methodData.getParameters() != null )
         {
-            for ( int parameterCount = 0; parameterCount <= methodData.getParameters().size(); parameterCount++ )
+            for ( int parameterCount = 0; parameterCount < methodData.getParameters().size(); parameterCount++ )
             {
                 ParameterData parameterData = methodData.getParameters().get( parameterCount );
 
@@ -42,10 +42,17 @@ public class MethodWriter
         }
         else
         {
-            printWriter.print( ")" );
+            printWriter.print( " ) " );
+        }
+        
+        if ( methodData.getThrowsExceptions() != null && methodData.getThrowsExceptions().size() > 0 )
+        {
+            printWriter.print( " throws " + WriterHelper.getListAsString( methodData.getThrowsExceptions() ) );
         }
 
-        printWriter.println( "  {" );
+        printWriter.println();
+
+        printWriter.println( "\t{" );
 
         try
         {
@@ -89,7 +96,9 @@ public class MethodWriter
             throw new BillAutoCodeGenerateException( e );
         }
 
-        printWriter.println( "  }" );
+        printWriter.println();
+
+        printWriter.println( "\t}" );
 
     }
 }

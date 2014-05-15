@@ -9,7 +9,7 @@ public class ClassDataPopulator
     public ClassData populateNGetClassData( GetClassData getClassData )
     {
         classData = new ClassData();
-        classData.setPackageInfo( getClassData.getPackageInfo() );
+        classData.setPackageInfo( getClassData.getPackage() );
         classData.setImports( getClassData.getImports() );
         classData.setAccessSpecifiers( getClassData.getAccessSpecifiers() );
         classData.setClassName( getClassData.getClassName() );
@@ -17,6 +17,7 @@ public class ClassDataPopulator
         classData.setInterfaces( getClassData.getInterfaces() );
         classData.setClassVariables( getClassData.getClassVariables() );
         classData.setMethods( getClassData.getMethods() );
+        classData.setFolder( getClassData.getFolder() );
         return classData;
     }
 

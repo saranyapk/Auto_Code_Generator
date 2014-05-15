@@ -22,7 +22,7 @@ public class ClassWriter
 
     public ClassWriter()
     {
-        this.config = AutoCodeGenerator.config;
+        this.config = AutoCodeGenerator.getConfig();
         methodWriter = new MethodWriter( config );
     }
 
@@ -49,6 +49,7 @@ public class ClassWriter
         printWriter.print( "package " + classData.getPackageInfo() + "." + classData.getFolder() + ";" );
 
         printWriter.println();
+        printWriter.println();
 
         if ( classData.getImports() != null )
         {
@@ -58,9 +59,11 @@ public class ClassWriter
             }
         }
 
+        printWriter.println();
+
         printWriter.println( "/** " + classData.getComments() + " */" );
 
-        printWriter.print( WriterHelper.getListAsString( classData.getAccessSpecifiers() ) + " " + classData.getClassName() );
+        printWriter.print( WriterHelper.getListAsString( classData.getAccessSpecifiers() ) + classData.getClassName() );
 
         if ( classData.getSuperClasses() != null && classData.getSuperClasses().size() > 1 )
         {
@@ -75,19 +78,22 @@ public class ClassWriter
         printWriter.println();
         printWriter.println( "{" );
 
-        for ( int varCount = 0; varCount < classData.getClassVariables().size(); varCount++ )
+        if ( classData.getClassVariables() != null )
         {
-            VariableData variableData = classData.getClassVariables().get( varCount );
-
-            printWriter.print( WriterHelper.getListAsString( variableData.getAccessSpecifiers() ) + " " + variableData.getType() + " " + variableData.getName() );
-
-            if ( variableData.getValue() != null )
+            for ( int varCount = 0; varCount < classData.getClassVariables().size(); varCount++ )
             {
-                printWriter.print( " = " + variableData.getValue() );
-            }
+                VariableData variableData = classData.getClassVariables().get( varCount );
 
-            printWriter.print( " ;" );
-            printWriter.println();
+                printWriter.print( WriterHelper.getListAsString( variableData.getAccessSpecifiers() ) + " " + variableData.getType() + " " + variableData.getName() );
+
+                if ( variableData.getValue() != null )
+                {
+                    printWriter.print( " = " + variableData.getValue() );
+                }
+
+                printWriter.print( " ;" );
+                printWriter.println();
+            }
         }
 
         if ( classData.getMethods() != null )

@@ -14,6 +14,7 @@ public class ConfigurationReader
         this.input = input;
     }
 
+    @SuppressWarnings("unchecked")
     public Configuration read() throws BillAutoCodeGenerateException
     {
         Configuration config = new Configuration();
@@ -62,6 +63,10 @@ public class ConfigurationReader
         List< String > extraValueComponents = (List< String >)input.get( "extra-value-components" );
 
         config.setExtraValueComponents( extraValueComponents );
+
+        config.setProject( (String)input.get( "project" ) );
+
+        config.setOutputFolder( (String)input.get( "output-folder" ) );
 
         return config;
     }

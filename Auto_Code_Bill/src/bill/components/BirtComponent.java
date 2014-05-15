@@ -24,13 +24,6 @@ public class BirtComponent implements GetClassData
     }
 
     @Override
-    public String getPackageInfo()
-    {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
     public String getClassName()
     {
         // TODO Auto-generated method stub
@@ -74,6 +67,13 @@ public class BirtComponent implements GetClassData
 
     @Override
     public List< MethodData > getMethods()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public String getFolder()
     {
         // TODO Auto-generated method stub
         return null;

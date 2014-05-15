@@ -1,4 +1,5 @@
 package: com.subex.interconnect.sitespecific.idea.taskcontroller.tasks.bill
+project: Idea
 is-delta: true
 query-processor-required: true
 rounding-mode: ROUNDUP

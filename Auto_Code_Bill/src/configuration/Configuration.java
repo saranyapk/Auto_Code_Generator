@@ -13,6 +13,7 @@ public class Configuration
     private String dateFormat;
     private String roundingMode;
     private String outputfolder;
+    private String project;
 
     public String getPackageInfo()
     {
@@ -102,6 +103,16 @@ public class Configuration
     public void setOutputFolder( String outputfolder )
     {
         this.outputfolder = outputfolder;
+    }
+
+    public String getProject()
+    {
+        return project;
+    }
+
+    public void setProject( String project )
+    {
+        this.project = project;
     }
 
 }
